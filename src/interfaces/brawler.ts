@@ -22,7 +22,7 @@ interface Rarity extends Class {
   color: string;
 }
 
-interface StarPower extends Class {
+export interface StarPower extends Class {
   path: string;
   version: number;
   description: string;
