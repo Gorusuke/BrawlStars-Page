@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
+import { BrawlerInterface } from './interfaces/brawler'
 import './App.css'
 
 function App() {
-  const [brawlers, setBrawlers] = useState([])
+  const [brawlers, setBrawlers] = useState<BrawlerInterface[]>([])
 
   useEffect(() => {
     fetch('https://api.brawlapi.com/v1/brawlers')
@@ -12,7 +13,7 @@ function App() {
       })
   }, [])
 
-  console.log(brawlers)
+  // console.log(brawlers)
   
   return (
     <>
@@ -65,3 +66,4 @@ function App() {
 }
 
 export default App
+
