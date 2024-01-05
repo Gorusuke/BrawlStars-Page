@@ -1,45 +1,102 @@
-.brawler {
-  height: 180px;
+.brawler-container {
+  display: grid;
+  place-content: center;
+  height: calc(100vh - 4rem);
+  padding: 1rem;
+
   & .container {
     background-color: white;
-    border-radius: 12px;
-    color: black;
-    display: flex;
-    gap: 16px;
-    
-    & .image {
-      border-radius: 12px 0 0 12px;
-      width: 170px; 
-    }
+    display: grid;
+    grid-template-columns: minmax(calc(360px - 32px), 800px);
+    height: min-content;
+    border-radius: 16px;
+    padding: 16px;
 
-    & .info {
-      height: max-content;
-      text-align: center;
-      width: 100%;
+    & .info-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
 
-      h3 {
-        margin: 12px 0;
-      }
-
-      span {
-        color: #444;
-        display: block;
-        font-size: large;
-        font-weight: 600;
+      & .image {
+        width: 400px;
       }
   
-      & .powers {
-        display: flex; 
-        justify-content: center;
-        margin-top: 10px; 
-        gap: 8px; 
+      & .info {
+        color: black;
+        font-size: 18px;
+  
+        & h2 {
+          margin: 16px 0;
+        }
+  
+        & span {
+          display: block;
+          margin: 16px 0;
+        }
 
-        & .powers-image{
-          height: 37px;
-          width: 35px;
+        & .powers {
+          display: inline-flex; 
+          margin-top: 20px; 
+          gap: 16px;
+
+          & .tooltip {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+
+            & .powers-image {
+              height: 57px;
+              width: 55px;
+            }
+
+            .tooltip-content {
+              width: max-content;
+              position: absolute;
+              bottom: 0;
+              font-size: 14px;
+              background: black;
+              color: #ffffff;
+              padding: 5px 8px;
+              border-radius: 5px;
+              box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+              opacity: 0;
+              pointer-events: none;
+              display: none;
+              transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+              & span {
+                margin: 0;
+              }
+            }
+          }
+
+          & .tooltip .tooltip-content::before {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            background: black;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%) rotate(45deg);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          }
+
+          
+          & .tooltip:hover .tooltip-content {
+            bottom: 65px;
+            opacity: 1;
+            display: inline;
+            pointer-events: auto;
+            width: 300px;
+          }
         }
       }
-
     }
+
   }
 }
