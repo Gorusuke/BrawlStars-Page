@@ -28,3 +28,24 @@
   padding: 2rem 0;
   text-align: center;
 }
+
+.loading-container {
+  display: grid;
+  place-content: center;
+  height: calc(100vh - 4rem);
+  & img {
+    width: 150px;
+    height: 150px;
+    animation: loading 1.25s ease-in-out infinite;
+  }
+}
+
+@keyframes loading{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+

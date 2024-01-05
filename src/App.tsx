@@ -1,25 +1,13 @@
-import { useEffect, useState } from 'react'
-import { BrawlerInterface } from './interfaces/brawler'
-import './App.css'
+import { Route } from 'wouter'
+import Brawlers from './Components/Brawlers/Brawlers'
 import Brawler from './Components/Brawler/Brawler'
+import './App.css'
 
-function App() {
-  const [brawlers, setBrawlers] = useState<BrawlerInterface[]>([])
-
-  useEffect(() => {
-    fetch('https://api.brawlapi.com/v1/brawlers')
-      .then(res => res.json())
-      .then(res => {
-        const { list } = res
-        const listSorted = [...list]
-          .sort((a: BrawlerInterface, b: BrawlerInterface) => a.id - b.id)
-        setBrawlers(listSorted)
-      })
-  }, [])
-  
+function App() {  
   return (
     <>
-      {brawlers.map(brawler => <Brawler key={brawler.id} brawler={brawler} /> )}
+      <Route path='/' component={Brawlers} />
+      <Route path='/brawler/:id' component={Brawler} />
     </>
   )
 }
