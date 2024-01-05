@@ -1,0 +1,45 @@
+.brawler {
+  height: 180px;
+  & .container {
+    background-color: white;
+    border-radius: 12px;
+    color: black;
+    display: flex;
+    gap: 16px;
+    
+    & .image {
+      border-radius: 12px 0 0 12px;
+      width: 170px; 
+    }
+
+    & .info {
+      height: max-content;
+      text-align: center;
+      width: 100%;
+
+      h3 {
+        margin: 12px 0;
+      }
+
+      span {
+        color: #444;
+        display: block;
+        font-size: large;
+        font-weight: 600;
+      }
+  
+      & .powers {
+        display: flex; 
+        justify-content: center;
+        margin-top: 10px; 
+        gap: 8px; 
+
+        & .powers-image{
+          height: 37px;
+          width: 35px;
+        }
+      }
+
+    }
+  }
+}
