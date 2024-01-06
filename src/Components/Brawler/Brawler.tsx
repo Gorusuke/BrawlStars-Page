@@ -33,8 +33,8 @@ const Brawler = () => {
               <div className="info">
                 <h2>{brawler.name}</h2>
                 <span>{brawler.description}</span>
-                <span>{brawler.class.name}</span>
-                <span>{brawler.rarity.name}</span>
+                <span className="class">{brawler.class.name}</span>
+                <span style={{color: brawler.rarity.color}}>{brawler.rarity.name}</span>
                 <div className="powers">
                   {[...brawler.starPowers, ...brawler.gadgets].map(gadget => <Powers key={gadget.id} power={gadget} tooltip />)}
                 </div>

@@ -9,13 +9,7 @@ interface Props {
 const Powers = ({ power, className = 'powers-image', tooltip }: Props) => {
   return (
     <>
-      {!tooltip &&
-        <img
-          className={className}
-          src={power.imageUrl}
-          alt={power.name}
-        />
-      }
+      {!tooltip && <img className={className} src={power.imageUrl} alt={power.name} /> }
       {tooltip &&
         <div className="tooltip">
           <div className="tooltip-content">

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { Link } from 'wouter'
 import Powers from "../Atoms/Powers"
+import Loading from "../Atoms/Loading"
 import { BrawlerInterface } from "../../interfaces/brawler"
 import './styles.css' 
-import Loading from "../Atoms/Loading"
 
 function Brawlers() {
   const [brawlers, setBrawlers] = useState<BrawlerInterface[]>([])
@@ -33,7 +33,7 @@ function Brawlers() {
             key={brawler.id}
           >
             <Link href={`/brawler/${brawler.id}`}>
-              <div className="container">
+              <section className="container">
                 <img
                   className="image"
                   src={brawler.imageUrl2}
@@ -41,13 +41,13 @@ function Brawlers() {
                 />
                 <div className="info">
                   <h3>{brawler.name}</h3>
-                  <span>{brawler.class.name}</span>
-                  <span>{brawler.rarity.name}</span>
+                  <span className="class">{brawler.class.name}</span>
+                  <span style={{color: brawler.rarity.color}}>{brawler.rarity.name}</span>
                   <div className="powers">
                     {powersAndGadgets.map(gadget => <Powers key={gadget.id} power={gadget} className="powers-image" />)}
                   </div>
                 </div>
-              </div>
+              </section>
             </Link>
           </div>
         )

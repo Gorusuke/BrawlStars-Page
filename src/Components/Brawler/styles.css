@@ -32,6 +32,9 @@
         & span {
           display: block;
           margin: 16px 0;
+          color: #444;
+          font-size: large;
+          font-weight: 600;
         }
 
         & .powers {
