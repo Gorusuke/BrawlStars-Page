@@ -30,3 +30,22 @@ export interface StarPower extends Class {
   imageUrl: string;
   released: boolean;
 }
+
+export interface AllRarity{
+  'Common':  BrawlerInterface[];
+  'Rare': BrawlerInterface[];
+  'Super Rare': BrawlerInterface[];
+  'Epic':  BrawlerInterface[];
+  'Mythic': BrawlerInterface[];
+  'Legendary': BrawlerInterface[];
+}
+
+export interface AllClasses {
+  'Damage Dealer': BrawlerInterface[];
+  'Tank': BrawlerInterface[];
+  'Marksman': BrawlerInterface[];
+  'Artillery': BrawlerInterface[];
+  'Controller': BrawlerInterface[];
+  'Assassin': BrawlerInterface[];
+  'Support': BrawlerInterface[];
+}
