@@ -4,6 +4,7 @@ import { BrawlerInterface } from "../../interfaces/brawler"
 import Loading from "../Atoms/Loading"
 import Powers from "../Atoms/Powers"
 import './styles.css'
+import { getBrawler } from "../../Utils"
 
 const Brawler = () => {
   const [brawler, setBrawler] = useState({} as BrawlerInterface)
@@ -12,8 +13,7 @@ const Brawler = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch(`https://api.brawlapi.com/v1/brawlers/${id}`)
-      .then(res => res.json())
+    getBrawler(id!)
       .then(res => setBrawler(res))
       .finally(() => setIsLoading(false))
   }, [id])
@@ -37,7 +37,7 @@ const Brawler = () => {
                 className="image"
                 src={brawler.imageUrl2}
                 alt={brawler.name}
-                style={{border: `16px solid ${brawler.rarity.color}`}}
+                style={{border: `10px solid ${brawler.rarity.color}`}}
               />
               {/* <div style={{ backgroundColor: brawler.rarity.color }} className="test">
                 <h2>{brawler.name}</h2>

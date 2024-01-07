@@ -2,56 +2,60 @@ import { useEffect, useState } from "react"
 import { Link } from 'wouter'
 import Powers from "../Atoms/Powers"
 import Loading from "../Atoms/Loading"
+import Filters from "../Atoms/Filters"
+import { FilterByRarity, filterBrawlers, getAllBrawlers } from "../../Utils"
 import { BrawlerInterface } from "../../interfaces/brawler"
 import './styles.css' 
 
 function Brawlers() {
   const [brawlers, setBrawlers] = useState<BrawlerInterface[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [text, setText] = useState<string>('')
 
   useEffect(() => {
     setIsLoading(true)
-    fetch('https://api.brawlapi.com/v1/brawlers')
-      .then(res => res.json())
-      .then(res => {
-        const { list } = res
-        const listSorted = [...list]
-          .sort((a: BrawlerInterface, b: BrawlerInterface) => a.id - b.id)
-        setBrawlers(listSorted)
-      })
+    getAllBrawlers()
+      .then(res => setBrawlers(res))
       .finally(() => setIsLoading(false))
   }, [])
 
+  if (isLoading) return <Loading />
+  console.log(FilterByRarity(brawlers, 'rarity'))
+
   return (
-    isLoading
-      ? <Loading />
-      : brawlers.map(brawler => {
-        const powersAndGadgets = [...brawler.starPowers, ...brawler.gadgets]
-        return (
-          <div
-            className="brawler"
-            key={brawler.id}
-          >
-            <Link href={`/brawler/${brawler.id}`}>
-              <section className="container">
-                <img
-                  className="image"
-                  src={brawler.imageUrl2}
-                  alt={brawler.name}
-                />
-                <div className="info">
-                  <h3>{brawler.name}</h3>
-                  <span className="class">{brawler.class.name}</span>
-                  <span style={{color: brawler.rarity.color}}>{brawler.rarity.name}</span>
-                  <div className="powers">
-                    {powersAndGadgets.map(gadget => <Powers key={gadget.id} power={gadget} className="powers-image" />)}
+    <>
+      <Filters setText={setText} />
+      <section className="brawlers-container">
+        {filterBrawlers(brawlers, text).map(brawler => {
+          const powersAndGadgets = [...brawler.starPowers, ...brawler.gadgets]
+          return (
+            <div
+              className="brawler"
+              style={{border: `4px solid ${brawler.rarity.color}`}}
+              key={brawler.id}
+            >
+              <Link href={`/brawler/${brawler.id}`}>
+                <section className="container">
+                  <img
+                    className="image"
+                    src={brawler.imageUrl2}
+                    alt={brawler.name}
+                  />
+                  <div className="info">
+                    <h3>{brawler.name}</h3>
+                    <span className="class">{brawler.class.name}</span>
+                    <span style={{color: brawler.rarity.color}}>{brawler.rarity.name}</span>
+                    <div className="powers">
+                      {powersAndGadgets.map(gadget => <Powers key={gadget.id} power={gadget} className="powers-image" />)}
+                    </div>
                   </div>
-                </div>
-              </section>
-            </Link>
-          </div>
-        )
-      })
+                </section>
+              </Link>
+            </div>
+          )
+        })}
+      </section>
+    </>
   )
 }
 
