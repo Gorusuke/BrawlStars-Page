@@ -1,5 +1,5 @@
 import { BrawlerInterface, AllRarity, AllClasses } from "../interfaces/brawler"
-import { RARITY, URL } from "./constants"
+import { FIRST_BRAWLER_ID, LAST_BRAWLER_ID, PREV, RARITY, URL } from "./constants"
 
 export const getAllBrawlers = async () => {
   const response = await fetch(URL)
@@ -44,4 +44,25 @@ export const FilterByType = (data: BrawlerInterface[], text: string) => {
   })
   if (text === RARITY) return allRarity
   return allClasses
+}
+
+export const linkRouter = (
+  step: string, params: { id?: string }, navigate: (arg: string) => void
+) => {
+  const url = location.origin
+  if (step === PREV) {
+    if (params.id === (Number(FIRST_BRAWLER_ID) - 1).toString()) {
+      params.id = LAST_BRAWLER_ID
+      navigate(`${url}/brawler/${LAST_BRAWLER_ID}`)
+      return `/brawler/${Number(params.id) - 1}`
+    }
+    return `/brawler/${Number(params.id) - 1}`      
+  } else {
+    if (params.id === (Number(LAST_BRAWLER_ID) + 1).toString()) {
+      params.id = FIRST_BRAWLER_ID
+      navigate(`${url}/brawler/${FIRST_BRAWLER_ID}`)
+      return `/brawler/${Number(params.id) + 1}`
+    }
+    return `/brawler/${Number(params.id) + 1}`
+  }
 }

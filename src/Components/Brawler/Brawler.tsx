@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "wouter"
+import { navigate } from "wouter/use-location"
 import { BrawlerInterface } from "../../interfaces/brawler"
-import { getBrawler } from "../../Utils"
+import { getBrawler, linkRouter } from "../../Utils"
+import { NEXT, PREV } from "../../Utils/constants"
 import Loading from "../Atoms/Loading"
 import Powers from "../Atoms/Powers"
 import './styles.css'
@@ -9,14 +11,14 @@ import './styles.css'
 const Brawler = () => {
   const [brawler, setBrawler] = useState({} as BrawlerInterface)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const { id } = useParams()
+  const params = useParams()
 
   useEffect(() => {
     setIsLoading(true)
-    getBrawler(id!)
+    getBrawler(params.id!)
       .then(res => setBrawler(res))
       .finally(() => setIsLoading(false))
-  }, [id])
+  }, [params.id])
 
   const cutText = (text: string) => {
     if (text.length > 150) {
@@ -32,7 +34,7 @@ const Brawler = () => {
       {!isLoading && Boolean(Object.values(brawler).length) &&
         <div className="brawler-container">
           <div className="arrows-container">
-            <Link href={`/brawler/${Number(id) - 1}`} >
+            <Link href={linkRouter(PREV, params, navigate)}>
               <button className="arrow-left">
                 <svg 
                   width="24px" 
@@ -53,7 +55,7 @@ const Brawler = () => {
                 Prev Brawler
               </button>
             </Link>
-            <Link href={`/brawler/${Number(id) + 1}`} >
+            <Link href={linkRouter(NEXT, params, navigate)}>
               <button className="arrow-right">
                 Next Brawler
                 <svg 
