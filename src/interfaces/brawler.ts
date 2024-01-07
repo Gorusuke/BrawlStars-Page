@@ -31,7 +31,7 @@ export interface StarPower extends Class {
   released: boolean;
 }
 
-export interface AllRarity{
+export interface AllRarity {
   'Common':  BrawlerInterface[];
   'Rare': BrawlerInterface[];
   'Super Rare': BrawlerInterface[];
@@ -49,3 +49,5 @@ export interface AllClasses {
   'Assassin': BrawlerInterface[];
   'Support': BrawlerInterface[];
 }
+
+export type AllTypes = AllClasses | AllRarity

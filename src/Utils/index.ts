@@ -42,11 +42,6 @@ export const FilterByRarity = (data: BrawlerInterface[], text: string) => {
     allRarity[brawler.rarity.name as keyof AllRarity].push(brawler)
     allClasses[brawler.class.name as keyof AllClasses].push(brawler)
   })
-  if (text.length) {
-    if (text === RARITY) return allRarity
-    return allClasses
-  }
-  return data
+  if (text === RARITY) return allRarity
+  return allClasses
 }
-
-// console.log(FilterByRarity(brawlers))
