@@ -29,7 +29,7 @@
 .logo {
   display: grid;
   cursor: pointer;
-  width: 150px;
+  width: 100px;
   margin: 20px auto 40px auto;
 }
 

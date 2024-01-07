@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { useParams } from "wouter"
+import { Link, useParams } from "wouter"
 import { BrawlerInterface } from "../../interfaces/brawler"
+import { getBrawler } from "../../Utils"
 import Loading from "../Atoms/Loading"
 import Powers from "../Atoms/Powers"
 import './styles.css'
-import { getBrawler } from "../../Utils"
 
 const Brawler = () => {
   const [brawler, setBrawler] = useState({} as BrawlerInterface)
@@ -31,6 +31,52 @@ const Brawler = () => {
       {isLoading && <Loading />}
       {!isLoading && Boolean(Object.values(brawler).length) &&
         <div className="brawler-container">
+          <div className="arrows-container">
+            <Link href={`/brawler/${Number(id) - 1}`} >
+              <button className="arrow-left">
+                <svg 
+                  width="24px" 
+                  height="24px" 
+                  viewBox="0 0 24 24" 
+                  strokeWidth="1.5" 
+                  fill="currentColor" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  color="currentColor"
+                >
+                  <path d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5" 
+                    stroke="currentColor" 
+                    strokeWidth="1.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  ></path>
+                </svg>
+                Prev Brawler
+              </button>
+            </Link>
+            <Link href={`/brawler/${Number(id) + 1}`} >
+              <button className="arrow-right">
+                Next Brawler
+                <svg 
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24" 
+                  strokeWidth="1.5" 
+                  fill="currentColor" 
+                  xmlns="http://www.w3.org/2000/svg"
+                  color="currentColor"
+                >
+                  <path 
+                    d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5" 
+                    stroke="currentColor" 
+                    strokeWidth="1.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  >
+                  </path>
+                </svg>
+              </button>
+            </Link>
+          </div>
           <div className="container">
             <section className="info-container">
               <img

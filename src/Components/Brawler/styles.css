@@ -4,6 +4,27 @@
   height: 50vh;
   padding: 1rem;
 
+  & .arrows-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    & .arrow-left, .arrow-right {
+      align-items: center;
+      display: flex;
+      gap: 5px;
+      font-size: 15px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    
+    & .arrow-left:hover, 
+      .arrow-right:hover {
+      color: #09f;
+    }
+  }
+
   & .container {
     background-color: white;
     display: grid;
