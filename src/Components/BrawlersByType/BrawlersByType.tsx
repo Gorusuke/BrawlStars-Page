@@ -1,10 +1,10 @@
 import { Link } from "wouter"
 import { AllTypes, BrawlerInterface } from "../../interfaces/brawler"
-import { FilterByRarity } from "../../Utils"
+import { FilterByType } from "../../Utils"
 import './styles.css'
 
-const BrawlerByRarity = ({ brawlers, selection }: { brawlers: BrawlerInterface[], selection: string }) => {
-  const result: AllTypes = FilterByRarity(brawlers, selection)
+const BrawlersByType = ({ brawlers, selection }: { brawlers: BrawlerInterface[], selection: string }) => {
+  const result: AllTypes = FilterByType(brawlers, selection)
   const rarityNames = Object.keys(result)
 
   return (
@@ -30,4 +30,4 @@ const BrawlerByRarity = ({ brawlers, selection }: { brawlers: BrawlerInterface[]
   )
 }
 
-export default BrawlerByRarity
+export default BrawlersByType

@@ -3,7 +3,7 @@ import { Link } from 'wouter'
 import Powers from "../Atoms/Powers"
 import Loading from "../Atoms/Loading"
 import Filters from "../Atoms/Filters"
-import BrawlerByRarity from "../BrawlerByRarity/BrawlerByRarity"
+import BrawlerByType from "../BrawlersByType/BrawlersByType"
 import { BrawlerInterface } from "../../interfaces/brawler"
 import { filterBrawlers, getAllBrawlers } from "../../Utils"
 import { ALL } from "../../Utils/constants"
@@ -28,7 +28,7 @@ function Brawlers() {
     <>
       <Filters setText={setText} filterBy={filterBy} setFilterBy={setFilterBy} />
       <section className={filterBy !== ALL ? '' : "brawlers-container"}>
-        {filterBy !== ALL && <BrawlerByRarity brawlers={brawlers} selection={filterBy} />}
+        {filterBy !== ALL && <BrawlerByType brawlers={brawlers} selection={filterBy} />}
         {filterBy === ALL && filterBrawlers(brawlers, text).map(brawler => {
           const powersAndGadgets = [...brawler.starPowers, ...brawler.gadgets]
           return (

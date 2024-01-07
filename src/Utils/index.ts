@@ -20,7 +20,7 @@ export const filterBrawlers = (data: BrawlerInterface[], text: string) => {
   return data
 }
 
-export const FilterByRarity = (data: BrawlerInterface[], text: string) => {
+export const FilterByType = (data: BrawlerInterface[], text: string) => {
   const allRarity: AllRarity = {
     'Common':  [],
     'Rare': [],
