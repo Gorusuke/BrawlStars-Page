@@ -17,14 +17,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.root {
+/* .root {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 20px;
   max-width: 1280px;
   margin: 0 auto;
   padding: 5rem 0;
-}
+} */
 
 .loading-container {
   display: grid;
@@ -66,7 +66,7 @@
     position: relative;
     & .sort-button {
       padding: 6px;
-      width: 85px;
+      width: 110px;
       font-size: 16px;
       display: flex;
       justify-content: center;
@@ -100,7 +100,7 @@
         font-size: 18px;
         padding: 3px 0;
         text-align: center;
-        width: 85px;
+        width: 110px;
       }
     
       li:hover {

@@ -1,46 +1,55 @@
-.brawler {
-  height: 180px;
-  cursor: pointer;
-  & .container {
-    background-color: white;
+.brawlers-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 0;
+
+  & .brawler {
+    cursor: pointer;
     border-radius: 12px;
-    color: black;
-    display: flex;
-    gap: 16px;
-    
-    & .image {
-      border-radius: 12px 0 0 12px;
-      height: 180px;
-    }
 
-    & .info {
-      height: max-content;
-      text-align: center;
-      width: 100%;
-
-      & h3 {
-        margin: 12px 0;
-      }
-
-      & span {
-        color: #444;
-        display: block;
-        font-size: large;
-        font-weight: 600;
+    & .container {
+      background-color: white;
+      color: black;
+      display: flex;
+      gap: 16px;
+      border-radius: 7px;
+      
+      & .image {
+        border-radius: 7px 0 0 7px;
+        height: 175px;
       }
   
-      & .powers {
-        display: flex; 
-        justify-content: center;
-        margin-top: 10px; 
-        gap: 8px; 
-
-        & .powers-image {
-          height: 37px;
-          width: 35px;
+      & .info {
+        height: max-content;
+        text-align: center;
+        width: 100%;
+  
+        & h3 {
+          margin: 12px 0;
+        }
+  
+        & span {
+          color: #444;
+          display: block;
+          font-size: large;
+          font-weight: 600;
+        }
+    
+        & .powers {
+          display: flex; 
+          justify-content: center;
+          margin-top: 10px; 
+          gap: 8px; 
+  
+          & .powers-image {
+            height: 37px;
+            width: 35px;
+          }
         }
       }
-
     }
   }
 }
