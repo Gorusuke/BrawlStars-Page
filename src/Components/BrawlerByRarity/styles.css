@@ -1,0 +1,19 @@
+.types-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 0;
+  
+  & .image-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 100px));
+    gap: 10px;
+    padding: 1rem 0;
+
+    & .images {
+      border-radius: 7px ;
+      height: 100px;
+      cursor: pointer;
+    }
+  }
+
+}
