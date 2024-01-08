@@ -1,7 +1,6 @@
 .brawler-container {
   display: grid;
   place-content: center;
-  height: 50vh;
   padding: 1rem;
 
   & .arrows-container {

@@ -1,6 +1,9 @@
 import { Route, Switch, Link } from 'wouter'
 import Brawlers from './Components/Brawlers/Brawlers'
 import Brawler from './Components/Brawler/Brawler'
+import Maps from './Components/Maps/Maps'
+import Events from './Components/Events/Events'
+import GameModes from './Components/GameModes/GameModes'
 import BrawlStarsLogo from './Components/Atoms/BrawlStarsLogo'
 import './App.css'
 
@@ -20,9 +23,9 @@ function App() {
         <Route path='/' component={Brawlers} />
         <Route path='/brawlers' component={Brawlers} />
         <Route path='/brawler/:id' component={Brawler} />
-        <Route path='/maps' component={Brawler} />
-        <Route path='/events' component={Brawler} />
-        <Route path='/game-modes' component={Brawler} />
+        <Route path='/maps' component={Maps} />
+        <Route path='/events' component={Events} />
+        <Route path='/game-modes' component={GameModes} />
       </Switch>
     </>
   )
