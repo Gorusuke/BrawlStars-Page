@@ -1,4 +1,5 @@
 import { BrawlerInterface, AllRarity, AllClasses } from "../interfaces/brawler"
+import { GameModes } from "../interfaces/gameModes"
 import { Maps, MapsNamesInterface } from "../interfaces/maps"
 import { FIRST_BRAWLER_ID, LAST_BRAWLER_ID, PREV, RARITY, URL } from "./constants"
 
@@ -22,6 +23,26 @@ export const getAllMaps = async () => {
 
 export const getMap = async (id: string) => {
   const response = await fetch(`${URL}/maps/${id}`)
+  const map = await response.json()
+  const { list: allGameModes }: GameModes = await getAllGameModes()
+  const getGameMode = allGameModes.find(gameMode => gameMode.name === map.gameMode.name)
+  return {
+    ...map,
+    gameMode: {
+      ...map.gameMode,
+      description: getGameMode!.description,
+      mode: getGameMode!.title,
+    }
+  }
+}
+
+export const getAllGameModes = async () => {
+  const response = await fetch(`${URL}/gamemodes`)
+  return await response.json()
+}
+
+export const getGameMode = async (id: string) => {
+  const response = await fetch(`${URL}/gamemodes/${id}`)
   return await response.json()
 }
 

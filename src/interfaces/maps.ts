@@ -21,6 +21,8 @@ interface GameMode extends Common {
   color: string;
   bgColor: string;
   link: string;
+  description:string;
+  mode: string;
 }
 
 interface Environment extends Common {
@@ -34,7 +36,7 @@ interface Stat {
 }
 
 export interface MapInterface extends Maps {
-  stats: Stat[]
+  stats: Stat[];
 }
 
 export interface MapsNamesInterface {
