@@ -1,10 +1,10 @@
 import { Link } from "wouter"
 import { AllTypes, BrawlerInterface } from "../../interfaces/brawler"
-import { FilterByType } from "../../Utils"
+import { filterByType } from "../../Utils"
 import './styles.css'
 
 const BrawlersByType = ({ brawlers, selection }: { brawlers: BrawlerInterface[], selection: string }) => {
-  const result: AllTypes = FilterByType(brawlers, selection)
+  const result: AllTypes = filterByType(brawlers, selection)
   const rarityNames = Object.keys(result)
 
   return (
@@ -14,8 +14,8 @@ const BrawlersByType = ({ brawlers, selection }: { brawlers: BrawlerInterface[],
           <h2>{name}</h2>
           <div className="image-container">
             { // @ts-expect-error Property map does not exist on type never.
-              result[name as keyof AllTypes].map((brawler: BrawlerInterface) => (
-              <Link  key={brawler.id} href={`/brawler/${brawler.id}`}>
+              result[name as keyof AllTypes].map((brawler) => (
+              <Link key={brawler.id} href={`/brawler/${brawler.id}`}>
                 <img
                   className="images"
                   style={{border: `4px solid ${brawler.rarity.color}`}}
