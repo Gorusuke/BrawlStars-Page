@@ -1,16 +1,28 @@
-import { Route, Switch } from 'wouter'
+import { Route, Switch, Link } from 'wouter'
 import Brawlers from './Components/Brawlers/Brawlers'
 import Brawler from './Components/Brawler/Brawler'
-import BrawlStarsLogo from '../public/BrawlStarsLogo'
+import BrawlStarsLogo from './Components/Atoms/BrawlStarsLogo'
 import './App.css'
 
 function App() {
   return (
     <>
-      <BrawlStarsLogo />
+      <nav className='nav'>
+        <BrawlStarsLogo />
+        <ul>
+          <Link href='/brawlers'><a>Brawlers</a></Link>
+          <Link href='/maps'><a>Maps</a></Link>
+          <Link href='/events'><a>Events</a></Link>
+          <Link href='/game-modes'><a>Game Modes</a></Link>
+        </ul>
+      </nav>
       <Switch>
         <Route path='/' component={Brawlers} />
+        <Route path='/brawlers' component={Brawlers} />
         <Route path='/brawler/:id' component={Brawler} />
+        <Route path='/maps' component={Brawler} />
+        <Route path='/events' component={Brawler} />
+        <Route path='/game-modes' component={Brawler} />
       </Switch>
     </>
   )

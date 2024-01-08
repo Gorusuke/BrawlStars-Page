@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import NavArrow from '/NavArrow.svg'
 import Search from '/Search.svg'
 import { ALL, CLASS, RARITY } from '../../Utils/constants';
 import './atom-styles.css'
@@ -28,7 +27,24 @@ const Filters = ({ setText, filterBy, setFilterBy }:
           className='sort-button'
           onClick={() => setShowFilters((prev) => !prev)}
         >
-          Sort by <img src={NavArrow} alt="Arrow" />
+          Sort by 
+          <svg 
+            width="24px" 
+            height="24px" 
+            stroke-width="1.5" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg" 
+            color="currentColor"
+          >
+            <path 
+              d="M6 9L12 15L18 9" 
+              stroke="currentColor" 
+              stroke-width="1.5" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+            ></path>
+          </svg>
         </button>
         {showfilters &&
           <ul>

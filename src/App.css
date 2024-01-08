@@ -17,3 +17,45 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.nav {
+  max-width: 1280px;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  & .logo {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+    color: white;
+
+    & .svg-container {
+      width: 50px;
+    }
+  
+  }
+  & .logo:hover h1 {
+    color: #ffe058;
+  }
+  
+  & > ul {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 12px;
+    
+    & a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    & a:hover {
+      color: #ffe058;
+    }
+  }
+
+}
