@@ -1,5 +1,5 @@
 import { Link } from 'wouter'
-import '../src/App.css'
+import './atom-styles.css'
 
 const BrawlStarsLogo = () => {
   return (

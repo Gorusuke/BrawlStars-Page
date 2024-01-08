@@ -1,5 +1,5 @@
-import '../../App.css'
 import BSLogo from '/BrawlStarsLoading.svg'
+import './atom-styles.css'
 
 const Loading = () => {
   return (

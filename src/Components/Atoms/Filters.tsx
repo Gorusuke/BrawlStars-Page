@@ -2,6 +2,7 @@ import { useState } from 'react'
 import NavArrow from '/NavArrow.svg'
 import Search from '/Search.svg'
 import { ALL, CLASS, RARITY } from '../../Utils/constants';
+import './atom-styles.css'
 
 const Filters = ({ setText, filterBy, setFilterBy }:
   { setText: (arg: string) => void, filterBy: string, setFilterBy: (arg: string) => void }
