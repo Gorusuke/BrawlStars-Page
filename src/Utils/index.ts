@@ -1,4 +1,5 @@
 import { BrawlerInterface, AllRarity, AllClasses } from "../interfaces/brawler"
+import { Maps, MapsNamesInterface } from "../interfaces/maps"
 import { FIRST_BRAWLER_ID, LAST_BRAWLER_ID, PREV, RARITY, URL } from "./constants"
 
 export const getAllBrawlers = async () => {
@@ -13,6 +14,52 @@ export const getBrawler = async (id: string) => {
   return await response.json()
 }
 
+export const getAllMaps = async () => {
+  const response = await fetch(`${URL}/maps`)
+  const { list } = await response.json()
+  return list
+}
+
+export const getMap = async (id: string) => {
+  const response = await fetch(`${URL}/maps/${id}`)
+  return await response.json()
+}
+
+export const groupByMapsTitle = (data: Maps[]) => {
+  const mapsName: MapsNamesInterface = {
+    'Basket Brawl': [],
+    'Big Game': [],
+    'Boss Fight': [],
+    'Bot Drop': [],
+    'Bounty': [],
+    'Brawl Ball': [],
+    'Duels': [],
+    'Duo Showdown': [],
+    'Gem Grab': [],
+    'Heist': [],
+    'Hold The Trophy': [],
+    'Hot Zone': [],
+    'Hunters': [],
+    'Knockout': [],
+    'Last Stand': [],
+    'Lone Star': [],
+    'Payload': [],
+    'Pumpkin Plunder': [],
+    'Robo Rumble': [],
+    'Siege': [],
+    'Solo Showdown': [],
+    'Super City Rampage': [],
+    'Takedown': [],
+    'Volley Brawl': [],
+    'Wipeout': [],
+  }
+  const dataSorted = [...data].sort((a: Maps, b: Maps) => a.gameMode.name > b.gameMode.name ? 1 : -1)
+  dataSorted.forEach(map => {
+    mapsName[map.gameMode.name as keyof MapsNamesInterface].push(map)
+  })
+  return mapsName
+}
+
 export const filterBrawlers = (data: BrawlerInterface[], text: string) => {
   if (text.length) {
     return data.filter(brawl => brawl.name.toLowerCase().includes(text.toLowerCase()))
@@ -20,7 +67,7 @@ export const filterBrawlers = (data: BrawlerInterface[], text: string) => {
   return data
 }
 
-export const FilterByType = (data: BrawlerInterface[], text: string) => {
+export const filterByType = (data: BrawlerInterface[], text: string) => {
   const allRarity: AllRarity = {
     'Common':  [],
     'Rare': [],
