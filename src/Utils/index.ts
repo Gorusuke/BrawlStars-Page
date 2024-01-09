@@ -1,6 +1,6 @@
 import { BrawlerInterface, AllRarity, AllClasses } from "../interfaces/brawler"
 import { GameModes } from "../interfaces/gameModes"
-import { Maps, MapsNamesInterface } from "../interfaces/maps"
+import { Maps, MapsNamesInterface, Stat } from "../interfaces/maps"
 import { FIRST_BRAWLER_ID, LAST_BRAWLER_ID, PREV, RARITY, URL } from "./constants"
 
 export const getAllBrawlers = async () => {
@@ -24,11 +24,14 @@ export const getAllMaps = async () => {
 export const getMap = async (id: string) => {
   const response = await fetch(`${URL}/maps/${id}`)
   const map = await response.json()
-  const { list: allGameModes }: GameModes = await getAllGameModes()
-  const getGameMode = allGameModes.find(gameMode => gameMode.name === map.gameMode.name)
+  const [gameMode , allBrawlers] = await Promise.all([getAllGameModes(), getAllBrawlers()])
+  const { list }: GameModes = gameMode
+  const getGameMode = list.find(gameMode => gameMode.name === map.gameMode.name)
+  const brawlersByStats = allBrawlers.filter(brawl => map.stats.slice(0, 12).some((stat: Stat) => stat.brawler === brawl.id))
+  const stats = brawlersByStats.map(x => ({ image: x.imageUrl3, name: x.name, brawlerId: x.id }))
   return {
     ...map,
-    stats: map.stats.slice(0, 10),
+    stats,
     gameMode: {
       ...map.gameMode,
       description: getGameMode!.description,

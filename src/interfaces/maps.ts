@@ -29,14 +29,20 @@ interface Environment extends Common {
   path: string;
 }
 
-interface Stat {
+export interface Stat {
   brawler: number;
   winRate: number;
   useRate: number;
 }
 
+interface MapStat {
+  image: string;
+  name: string;
+  brawlerId: number
+}
+
 export interface MapInterface extends Maps {
-  stats: Stat[];
+  stats: MapStat[];
 }
 
 export interface MapsNamesInterface {

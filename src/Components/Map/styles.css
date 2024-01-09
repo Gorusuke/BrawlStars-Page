@@ -1,61 +1,74 @@
 .map{
-  display: grid;
-  grid-template-columns: repeat(auto-fit,  minmax(400px, 1fr));
-  max-width: 1280px;
+  max-width: max-content;
   margin: 0 auto;
   padding: 2rem 0;
   
   & .map-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
+    flex-direction: column;
     border-radius: 10px;
-
+    display: flex;
+    padding: 1rem;
+    gap: 20px;
+    
     & .map-info-container {
+      display: flex;
+      gap: 10px;
+      font-weight: 500;
       
-      > div {
-        display: flex;
-        gap: 10px;
-        padding: 1rem 1rem 1rem 0;
-        font-weight: 500;
-        
-        & > img {
-          width: 50px;
-          height: 50px;
-          margin-top: 12px;
+      & > img {
+        width: 50px;
+        height: 50px;
+        margin-top: 12px;
+      }
+      
+      & .map-info { 
+        max-width: 440px; 
+        & .map-name, 
+        .map-mode, 
+        .map-description {
+          display: block;
+          margin-top: 5px;
         }
         
-        & .map-info {  
-          & .map-name, 
-          .map-mode, 
-          .map-description {
-            display: block;
-            margin-top: 5px;
-          }
-          
-          & .map-name {
-            background-color: black;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        & .map-name {
+          background-color: black;
+          padding: 5px 10px;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
 
-            & > svg {
-              cursor: pointer;
-            }
+          & > svg {
+            cursor: pointer;
           }
-  
-          & .map-mode {
-            font-size: 18px;
-          }
+        }
+
+        & .map-mode {
+          font-size: 18px;
         }
       }
     }
 
     & .map-image {
       width: 100%;
+      max-width: 500px;
       height: auto;
+      padding: 0;
+    }
+
+    .top-brawlers {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+
+      & > img {
+        width: 70px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 6px double #fff;
+      }
     }
   }
 }
