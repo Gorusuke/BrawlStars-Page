@@ -130,6 +130,7 @@
   opacity: 1;
   display: inline;
   pointer-events: auto;
-  width: 300px;
+  min-width: min-content;
+  max-width: 300px;
   z-index: 3;
 }
