@@ -3,6 +3,7 @@ import { useParams } from 'wouter'
 import { getMap } from '../../Utils'
 import { MapInterface } from '../../interfaces/maps'
 import Loading from '../Atoms/Loading'
+import Tooltip from '../Atoms/Tooltip'
 import './styles.css'
 
 const Map = () => {
@@ -37,11 +38,7 @@ const Map = () => {
                   <span className='map-name'>
                     {map.name}
                     {map.credit &&
-                      <div className="tooltip">
-                        <div className="tooltip-content">
-                          <span>Community map!</span>
-                          <span>Concept by: <b>{map.credit}</b></span>
-                        </div>
+                      <Tooltip title='Community map!' description={map.credit} community>
                         <svg 
                           width="30px" 
                           height="30px" 
@@ -66,7 +63,7 @@ const Map = () => {
                             strokeLinejoin="round"
                           />
                         </svg>
-                      </div>                     
+                      </Tooltip>                  
                     }
                   </span>
                   <span className='map-mode'>{map.gameMode.mode}</span>
@@ -74,7 +71,8 @@ const Map = () => {
                 </div>
               </div>
               <div>
-                <h2>Recommended brawlers</h2>
+                <h2>Top 10 best brawlers for this map</h2>
+
               </div>
             </div>
           </div>

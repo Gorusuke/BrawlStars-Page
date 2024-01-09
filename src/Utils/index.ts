@@ -28,6 +28,7 @@ export const getMap = async (id: string) => {
   const getGameMode = allGameModes.find(gameMode => gameMode.name === map.gameMode.name)
   return {
     ...map,
+    stats: map.stats.slice(0, 10),
     gameMode: {
       ...map.gameMode,
       description: getGameMode!.description,

@@ -1,4 +1,5 @@
 import { StarPower } from "../../interfaces/brawler"
+import Tooltip from "./Tooltip";
 
 interface Props {
   power: StarPower;
@@ -11,17 +12,13 @@ const Powers = ({ power, className = 'powers-image', tooltip }: Props) => {
     <>
       {!tooltip && <img className={className} src={power.imageUrl} alt={power.name} /> }
       {tooltip &&
-        <div className="tooltip">
-          <div className="tooltip-content">
-            <span><b>{power.name}</b></span>
-            <span>{power.description}</span>
-          </div>
+        <Tooltip title={power.name} description={power.description}>
           <img
             className={className}
             src={power.imageUrl}
             alt={power.name}
           />
-        </div>
+        </Tooltip>
       }
     </>
   )
