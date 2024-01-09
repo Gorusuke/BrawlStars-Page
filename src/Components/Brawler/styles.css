@@ -20,7 +20,7 @@
     
     & .arrow-left:hover, 
       .arrow-right:hover {
-      color: #09f;
+      color: #ffe058;
     }
   }
 
@@ -34,12 +34,13 @@
 
     & .info-container {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 2fr 2.5fr;
       gap: 16px;
       position: relative;
-
+        
       & .image {
-        width: 320px;
+        width: 100%;
+        height: auto;
         border-radius: 16px 0 0 16px;
         z-index: 2;
       }
