@@ -21,18 +21,21 @@ const Maps = () => {
     <>
       {isLoading && <Loading />}
       {!isLoading &&
-        mapsNames.map(mapName => (
-          <section key={mapName} className='maps-title'>
-            <h2>{mapName}</h2>
-            <div className='maps-container'>
-              {maps[mapName as keyof MapsNamesInterface].map(map => (
-                <Link href={`/maps/${map.id}`} key={map.id}>
-                  <img src={map.imageUrl} alt={map.name} />
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))
+        <>
+          <h1 className='title'>Maps</h1>
+          {mapsNames.map(mapName => (
+            <section key={mapName} className='maps-title'>
+              <h2>{mapName}</h2>
+              <div className='maps-container'>
+                {maps[mapName as keyof MapsNamesInterface].map(map => (
+                  <Link href={`/maps/${map.id}`} key={map.id}>
+                    <img src={map.imageUrl} alt={map.name} />
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ))}
+        </>
       }
     </>
   )

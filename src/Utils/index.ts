@@ -24,9 +24,9 @@ export const getAllMaps = async () => {
 export const getMap = async (id: string) => {
   const response = await fetch(`${URL}/maps/${id}`)
   const map = await response.json()
-  const [gameMode , allBrawlers] = await Promise.all([getAllGameModes(), getAllBrawlers()])
-  const { list }: GameModes = gameMode
-  const getGameMode = list.find(gameMode => gameMode.name === map.gameMode.name)
+  const [allGameModes , allBrawlers] = await Promise.all([getAllGameModes(), getAllBrawlers()])
+  const { list }: GameModes = allGameModes
+  const gameMode = list.find(game => game.name === map.gameMode.name)
   const brawlersByStats = allBrawlers.filter(brawl => map.stats.slice(0, 12).some((stat: Stat) => stat.brawler === brawl.id))
   const stats = brawlersByStats.map(x => ({ image: x.imageUrl3, name: x.name, brawlerId: x.id }))
   return {
@@ -34,8 +34,8 @@ export const getMap = async (id: string) => {
     stats,
     gameMode: {
       ...map.gameMode,
-      description: getGameMode!.description,
-      mode: getGameMode!.title,
+      description: gameMode!.description,
+      mode: gameMode!.title,
     }
   }
 }
@@ -45,10 +45,10 @@ export const getAllGameModes = async () => {
   return await response.json()
 }
 
-export const getGameMode = async (id: string) => {
-  const response = await fetch(`${URL}/gamemodes/${id}`)
-  return await response.json()
-}
+// export const getGameMode = async (id: string) => {
+//   const response = await fetch(`${URL}/gamemodes/${id}`)
+//   return await response.json()
+// }
 
 export const groupByMapsTitle = (data: Maps[]) => {
   const mapsName: MapsNamesInterface = {

@@ -18,8 +18,6 @@ const Map = () => {
       .finally(() => setIsLoading(false))
   }, [id])
 
-  console.log(map)
-
   return (
     <>
       {isLoading && <Loading />}
@@ -37,7 +35,7 @@ const Map = () => {
                 <span className='map-name'>
                   {map.name}
                   {map.credit &&
-                    <Tooltip title='Community map!' description={map.credit} community>
+                    <Tooltip title='Community map!' description={map.credit} community high='45px'>
                       <svg 
                         width="30px" 
                         height="30px" 

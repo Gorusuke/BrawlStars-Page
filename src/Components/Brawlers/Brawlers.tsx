@@ -27,6 +27,7 @@ function Brawlers() {
   return (
     <>
       <Filters setText={setText} filterBy={filterBy} setFilterBy={setFilterBy} />
+      <h1 className='title'>Brawlers</h1>
       <section className={filterBy !== ALL ? '' : "brawlers-container"}>
         {filterBy !== ALL && <BrawlerByType brawlers={brawlers} selection={filterBy} />}
         {filterBy === ALL && filterBrawlers(brawlers, text).map(brawler => {
