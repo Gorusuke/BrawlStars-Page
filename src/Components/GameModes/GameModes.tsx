@@ -18,8 +18,6 @@ const GameModes = () => {
       .finally(() => setIsLoading(false))
   }, [id])
 
-  console.log(gameModes)
-
   return (
     <>
       {isLoading && <Loading />}

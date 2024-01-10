@@ -45,6 +45,11 @@ export const getAllGameModes = async () => {
   return await response.json()
 }
 
+export const getAllEvents = async () => {
+  const response = await fetch(`${URL}/events`)
+  return await response.json()
+} 
+
 // export const getGameMode = async (id: string) => {
 //   const response = await fetch(`${URL}/gamemodes/${id}`)
 //   return await response.json()
