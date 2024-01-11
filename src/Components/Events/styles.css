@@ -2,11 +2,16 @@
   max-width: 1280px;
   margin: 0 auto;
 
+  h2 {
+    margin-bottom: 20px;
+    text-transform: capitalize;
+  }
+
   .event-card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(415px, 1fr));
     gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
     .card-container {
       display: flex;
@@ -16,9 +21,11 @@
       .event-time {
         display: flex;
         justify-content: end;
+        align-items: center;
         background-color: #000;
-        font-size: 16px;
+        font-size: 13px;
         font-weight: 600;
+        padding-right: 10px;
       }
 
       .event-card-background {
