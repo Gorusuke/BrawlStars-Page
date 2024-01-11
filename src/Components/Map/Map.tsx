@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'wouter'
+import { useParams } from 'wouter'
 import { getMap } from '../../Utils'
 import { MapInterface } from '../../interfaces/maps'
 import Loading from '../Atoms/Loading'
 import Tooltip from '../Atoms/Tooltip'
 import './styles.css'
+import BrawlStats from '../Atoms/BrawlStats'
 
 const Map = () => {
   const [map, setMap] = useState({} as MapInterface)
@@ -69,13 +70,7 @@ const Map = () => {
             </div>
             <div>
               <h3>Top 12 best brawlers for this map</h3>
-              <div className='top-brawlers'>
-                {map.stats.map(stat =>
-                  <Link key={stat.name} href={`/brawler/${stat.brawlerId}`}>
-                    <img  src={stat.image} alt={stat.name} />
-                  </Link>
-                )}
-              </div>
+              <BrawlStats stats={map.stats} />
             </div>
           </div>
         </section>

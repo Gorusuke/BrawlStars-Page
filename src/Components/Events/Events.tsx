@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'wouter'
 import { Events } from '../../interfaces/events'
 import { getAllEvents } from '../../Utils'
 import Loading from '../Atoms/Loading'
+import BrawlStats from '../Atoms/BrawlStats'
 import './styles.css'
 
 const Events = () => {
@@ -24,7 +24,7 @@ const Events = () => {
     return (result / 60).toString().split('.');
   }
 
-  console.log(brawlEvents)
+  // console.log(brawlEvents)
 
   return (
     <>
@@ -56,19 +56,13 @@ const Events = () => {
                     </div>
 
                     <div className='stats-brawlers'>
-                      <div className='top-brawlers'>
-                        {brawlEvent.map.stats.map(stat => 
-                          <Link key={stat.name} href={`/brawler/${stat.brawlerId}`}>
-                            <img  src={stat.image} alt={stat.name} />
-                          </Link>
-                        )}
-                      </div>
+                      <BrawlStats stats={brawlEvent.map.stats} />
                       <span>Recommended brawlers for this event</span>
                     </div>
                   </div>
                 )
               })}
-          </div>
+            </div>
           <h2>Upcoming</h2>
           </section>
         </>
