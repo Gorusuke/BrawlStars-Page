@@ -1,4 +1,4 @@
-import { Stat } from "./maps";
+import { MapStat } from "./maps";
 
 export interface Events {
   active: Active[];
@@ -36,7 +36,7 @@ interface Map extends Common{
   gameMode: GameMode;
   lastActive: number;
   dataUpdated: number;
-  stats: Stat[];
+  stats: MapStat[];
   teamStats: [];
 }
 

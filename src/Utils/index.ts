@@ -24,11 +24,10 @@ export const getAllMaps = async () => {
 export const getMap = async (id: string) => {
   const response = await fetch(`${URL}/maps/${id}`)
   const map = await response.json()
-  const [allGameModes , allBrawlers] = await Promise.all([getAllGameModes(), getAllBrawlers()])
+  const allGameModes = await getAllGameModes()
   const { list }: GameModes = allGameModes
   const gameMode = list.find(game => game.name === map.gameMode.name)
-  const brawlersByStats = allBrawlers.filter(brawl => map.stats.slice(0, 12).some((stat: Stat) => stat.brawler === brawl.id))
-  const stats = brawlersByStats.map(x => ({ image: x.imageUrl3, name: x.name, brawlerId: x.id }))
+  const stats = await statsBrawlers(map.stats, 12)
   return {
     ...map,
     stats,
@@ -47,8 +46,32 @@ export const getAllGameModes = async () => {
 
 export const getAllEvents = async () => {
   const response = await fetch(`${URL}/events`)
-  return await response.json()
-} 
+  const allEvents = await response.json()
+  const eventsType = {
+    active: [],
+    upcoming: []
+  }
+  for (let idx = 0; idx < Object.keys(allEvents).length; idx++) {
+    const type = Object.keys(allEvents)[idx];
+    const typeArr = allEvents[type]
+    for (const act of typeArr) {
+      const stats = await statsBrawlers(act.map.stats, 3)
+      // @ts-expect-error next-line
+      eventsType[type as keyof typeof eventsType].push({ ...act, map: { ...act.map, stats }})
+    }
+  }
+  return {
+    active: eventsType.active,
+    upcoming: eventsType.upcoming
+  }
+}
+
+export const statsBrawlers = async (stats: Stat[], highValue: number) => {
+  const allBrawlers = await getAllBrawlers()
+  const brawlersByStats = allBrawlers.filter(brawl => stats.slice(0, highValue).some((stat: Stat) => stat.brawler === brawl.id))
+  const newStats = brawlersByStats.map(x => ({ image: x.imageUrl3, name: x.name, brawlerId: x.id }))
+  return newStats
+}
 
 // export const getGameMode = async (id: string) => {
 //   const response = await fetch(`${URL}/gamemodes/${id}`)
@@ -133,7 +156,7 @@ export const linkRouter = (
       navigate(`${url}/brawler/${LAST_BRAWLER_ID}`)
       return `/brawler/${Number(params.id) - 1}`
     }
-    return `/brawler/${Number(params.id) - 1}`      
+    return `/brawler/${Number(params.id) - 1}`
   } else {
     if (params.id === (Number(LAST_BRAWLER_ID) + 1).toString()) {
       params.id = FIRST_BRAWLER_ID

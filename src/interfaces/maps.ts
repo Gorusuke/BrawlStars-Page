@@ -35,7 +35,7 @@ export interface Stat {
   useRate: number;
 }
 
-interface MapStat {
+export interface MapStat {
   image: string;
   name: string;
   brawlerId: number
