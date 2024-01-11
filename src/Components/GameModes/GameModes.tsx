@@ -3,8 +3,8 @@ import { useParams } from 'wouter'
 import { getAllGameModes } from '../../Utils'
 import { GameMode } from '../../interfaces/gameModes'
 import Loading from '../Atoms/Loading'
-import './styles.css'
 import Tooltip from '../Atoms/Tooltip'
+import './styles.css'
 
 const GameModes = () => {
   const [gameModes, setGameModes] = useState<GameMode[]>([])
@@ -35,7 +35,7 @@ const GameModes = () => {
                       <svg
                         width="26px"
                         height="26px"
-                        stroke-width="1.5"
+                        strokeWidth="1.5"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
