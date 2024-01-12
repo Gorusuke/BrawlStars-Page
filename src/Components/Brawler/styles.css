@@ -2,6 +2,7 @@
   display: grid;
   place-content: center;
   padding: 1rem;
+  height: 75vh;
 
   & .arrows-container {
     display: flex;
@@ -89,6 +90,7 @@
           gap: 16px;
           
           & .powers-image {
+            cursor: auto;
             height: 50px;
             width: 48px;
           }

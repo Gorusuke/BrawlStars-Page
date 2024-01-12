@@ -22,17 +22,10 @@ const Events = () => {
       {!isLoading && Object.keys(brawlEvents).length &&
         <>
           <h1 className='title'>Events</h1>
-          <section className='event-container'>
-            {Object.entries(brawlEvents).map(brawlEvent => {
-              const [title, type] = brawlEvent
-              return (
-                <div key={title}>
-                  <h2>{title}</h2>
-                  <EventCards event={type} type={title.toLowerCase()} />
-                </div>
-              )
-            })}
-          </section>
+          {Object.entries(brawlEvents).map(brawlEvent => {
+            const [title, type] = brawlEvent
+            return <EventCards key={title} event={type} title={title} />
+          })}
         </>
       }
     </>
