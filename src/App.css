@@ -17,46 +17,104 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.nav {
+.layout-container {
   max-width: 1280px;
-  margin: 2rem auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
-  & .logo {
-    cursor: pointer;
+  margin: 0 auto;
+
+  .nav {
+    margin: 2rem 0;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    text-decoration: none;
-    gap: 10px;
-    color: white;
-
-    & .svg-container {
-      width: 50px;
-      height: 50px;
-    }
-  
-  }
-  & .logo:hover h1 {
-    color: #ffe058;
-  }
-  
-  & > ul {
-    display: grid;
-    grid-template-columns: repeat(4, max-content);
-    gap: 12px;
     
-    & a {
-      color: white;
+    & .logo {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
       text-decoration: none;
-      font-weight: 500;
-      letter-spacing: 0.5px;
+      gap: 10px;
+      color: white;
+  
+      & .svg-container {
+        width: 50px;
+        height: 50px;
+      }
+    
     }
 
-    & a:hover {
+    & .logo:hover h1 {
       color: #ffe058;
     }
+    
+    & > ul {
+      display: grid;
+      grid-template-columns: repeat(4, max-content);
+      gap: 12px;
+      
+      & a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+  
+      & a:hover {
+        color: #ffe058;
+      }
+    }
   }
+  
+  footer {
+    margin-bottom: 20px;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
 
+      & .logo {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        gap: 10px;
+        color: white;
+
+        > h1 {
+          font-size: 24px;
+        }
+    
+        & .svg-container {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      ul {
+        display: flex;
+        gap: 10px;
+      }
+    }
+
+    a {
+      font-size: 18px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #ffe058;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      p {
+        a {
+          margin: 0 5px;
+        }
+      }
+    }
+  }
 }
