@@ -19,25 +19,26 @@
 
     .game-card-info {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      justify-content: space-between;
       padding: 0px 10px;
       height: 40px;
-
-      .game-card-image {
-        width: 35px;
-        height: 35px;
-        object-fit: contain;
-      }
-
-      .game-card-svg-container {
-        cursor: pointer;
-        position: absolute;
-        right: 5px;
-        svg {
-          rotate: 15deg;
+      
+      > div {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .game-card-image {
+          width: 35px;
+          height: 35px;
+          object-fit: contain;
         }
-
+      }
+      
+      .card-image-container {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+        cursor: auto;
       }
     }
     

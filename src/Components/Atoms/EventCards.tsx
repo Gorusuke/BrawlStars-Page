@@ -1,6 +1,8 @@
 import BrawlStats from './BrawlStats'
 import { Active, Upcoming } from '../../interfaces/events'
 import { UPCOMING } from '../../Utils/constants'
+import { Link } from 'wouter'
+import Tooltip from './Tooltip'
 
 const EventCards = ({ event, type }: {event: Active[] | Upcoming[], type: string}) => {
 
@@ -24,7 +26,14 @@ const EventCards = ({ event, type }: {event: Active[] | Upcoming[], type: string
         return (
           <div key={brawlEvent.map.id} className='card-container'>
             <div className='event-card-container-info'>
-              <span className='event-time'>New Event in: {`${hour}h ${minutes}m`}</span>
+              <p className='event-time'>
+                <span>New Event in: {`${hour}h ${minutes}m`}</span>
+                <Tooltip title='Click to see the map' high='35px'>
+                  <Link href={`/maps/${brawlEvent.map.id}`}>
+                    <img src='https://cdn-old.brawlify.com/icon/Info-Round.png' alt="info" />
+                  </Link>
+                </Tooltip>
+              </p>
               <img className='event-card-background' src={brawlEvent.map.environment.imageUrl} alt={brawlEvent.map.environment.name} />
               <div className='event-card-info' style={{ backgroundColor: brawlEvent.map.gameMode.bgColor }}>
                 <img className='event-card-image' src={brawlEvent.map.gameMode.imageUrl} alt={brawlEvent.map.gameMode.name} />
