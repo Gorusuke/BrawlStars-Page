@@ -2,7 +2,7 @@
   display: grid;
   place-content: center;
   padding: 1rem;
-  height: 75vh;
+  height: 55vh;
 
   & .arrows-container {
     display: flex;
@@ -97,6 +97,5 @@
         }
       }
     }
-
   }
 }

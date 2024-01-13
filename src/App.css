@@ -65,10 +65,17 @@
   }
   
   footer {
+    background-position: top;
+    background-image: linear-gradient(to right, #686868 50%, rgba(255, 255, 255, 0) 0%);
+    background-repeat: repeat-x;
+    background-size: 30px 2px;
+    padding-top: 20px;
     margin-bottom: 20px;
+    
     nav {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 20px;
       align-items: center;
       margin-bottom: 16px;
 
@@ -92,12 +99,11 @@
 
       ul {
         display: flex;
-        gap: 10px;
+        gap: 30px;
       }
     }
 
     a {
-      font-size: 18px;
       color: #fff;
       text-decoration: none;
       font-weight: 600;
@@ -110,10 +116,17 @@
     > div {
       display: flex;
       flex-direction: column;
+      align-items: center;
       p {
+        color: #808080;
         a {
           margin: 0 5px;
         }
+      }
+      
+      .policy {
+        max-width: 600px;
+        text-align: center;
       }
     }
   }
